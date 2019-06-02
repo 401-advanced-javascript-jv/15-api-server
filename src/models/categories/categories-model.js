@@ -1,16 +1,13 @@
 'use strict';
 
 /**
- * Categories model, uses memory-model for backend.
+ * Categories model, uses mongo-model for backend.
  * @module src/models/categories/categories-model
- * @requires ../memory-model.js
+ * @requires ../mongo-model.js
  */
-const Model = require('../memory-model.js');
 
-const schema = {
-  _id: {required:true},
-  name: {required:true},
-};
+const Model = require('../mongo-model.js');
+const schema = require('./categories-schema.js');
 
 class Categories extends Model {}
 

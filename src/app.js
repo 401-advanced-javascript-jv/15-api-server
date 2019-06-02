@@ -10,6 +10,7 @@ const errorHandler = require( './middleware/500.js');
 const notFound = require( './middleware/404.js' );
 const authRouter = require( './auth/router.js' );
 const routes = require('./routes/routes.js');
+const apiRoutes = require('./api/v1.js');
 
 // Prepare the express app
 const app = express();
@@ -23,7 +24,7 @@ app.use(express.urlencoded({extended:true}));
 
 // Routes
 app.use(authRouter);
-app.use(routes);
+app.use('/v1', apiRoutes);
 
 // Role population available only when in dev mode
 if (process.env.DEVMODE) {
