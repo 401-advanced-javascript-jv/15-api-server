@@ -1,0 +1,49 @@
+{
+  "name": "apiserver",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "cors": "^2.8.5",
+    "debug": "^4.1.1",
+    "dotenv": "^8.0.0",
+    "eslint": "^5.16.0",
+    "express": "^4.17.1",
+    "jest": "^24.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb-memory-server": "^5.1.2",
+    "mongoose": "^5.5.12",
+    "mongoose-schema-jsonschema": "^1.2.1",
+    "morgan": "^1.9.1",
+    "require-directory": "^2.1.1",
+    "supertest": "^4.0.2",
+    "swagger-ui-express": "^4.0.5"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "devDependencies": {
+    "prettier": "^1.17.1"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "arrowParens": "always",
+    "endOfLine": "lf"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "watch": "nodemon index.js",
+    "lint": "eslint '**/*.js'",
+    "lintfix": "eslint --fix '**/*.js'",
+    "test": "jest --verbose --coverage",
+    "test-watch": "jest --watchAll --verbose --coverage",
+    "jsdoc": "jsdoc -c ./docs/config/jsdoc.config.json"
+  },
+  "keywords": [],
+  "author": "Jesse Van Volkinburg <vanvoljg@gmail.com>",
+  "license": "MIT"
+}
