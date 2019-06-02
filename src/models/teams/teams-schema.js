@@ -26,7 +26,7 @@ teams.pre('find', function() {
     this.populate('players');
   }
   catch(e) {
-    console.error('Find Error', e);
+    console.error('Find Population Error', e);
   }
 });
 

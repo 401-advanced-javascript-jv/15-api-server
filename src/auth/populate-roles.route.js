@@ -2,7 +2,7 @@
 
 const router = require('express').Router();
 
-const Role = require('./roles-model.js');
+const Role = require('src/auth/models/roles-model.js');
 
 router.get('/populate-roles', (request, response, next) => {
   const capabilities = {

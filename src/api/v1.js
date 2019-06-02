@@ -20,12 +20,12 @@ const router = express.Router();
 router.param('model', modelFinder);
 
 // API Routes
-router.get('/api/v1/:model', handleGetAll);
-router.post('/api/v1/:model', handlePost);
+router.get('/:model', handleGetAll);
+router.post('/:model', handlePost);
 
-router.get('/api/v1/:model/:id', handleGetOne);
-router.put('/api/v1/:model/:id', handlePut);
-router.delete('/api/v1/:model/:id', handleDelete);
+router.get('/:model/:id', handleGetOne);
+router.put('/:model/:id', handlePut);
+router.delete('/:model/:id', handleDelete);
 
 router.use('/doc', express.static(cwd + '/docs'));
 

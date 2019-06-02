@@ -1,8 +1,8 @@
 'use strict';
 
 /**
- * Mongoose schema for Players Model
- * @module src/models/players/players-schema
+ * Mongoose schema for Categories Model
+ * @module src/models/categories/categories-schema
  * @requires mongoose
  * @requires mongoose-schema-jsonschema
  */

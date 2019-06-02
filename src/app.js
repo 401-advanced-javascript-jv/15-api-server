@@ -8,8 +8,7 @@ const morgan = require('morgan');
 // Esoteric Resources
 const errorHandler = require( './middleware/500.js');
 const notFound = require( './middleware/404.js' );
-const authRouter = require( './auth/router.js' );
-const routes = require('./routes/routes.js');
+const authRouter = require( './auth/authRouter.js' );
 const apiRoutes = require('./api/v1.js');
 
 // Prepare the express app
@@ -23,8 +22,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 // Routes
-app.use(authRouter);
-app.use('/v1', apiRoutes);
+app.use('/auth', authRouter);
+app.use('/api/v1', apiRoutes);
 
 // Role population available only when in dev mode
 if (process.env.DEVMODE) {
