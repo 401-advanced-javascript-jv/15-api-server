@@ -9,94 +9,30 @@
  */
 
 const cwd = process.cwd();
-
 const express = require('express');
-
 const modelFinder = require(`${cwd}/src/middleware/model-finder.js`);
-
 const router = express.Router();
+const auth = require('../auth/auth.js');
+
+const handleGetAll = require('./middleware/getAll.js');
+const handleGetOne = require('./middleware/getOne.js');
+const handlePost = require('./middleware/post.js');
+const handlePut = require('./middleware/put.js');
+const handlePatch = require('./middleware/patch.js');
+const handleDelete = require('./middleware/delete.js');
 
 // Evaluate the model, dynamically
 router.param('model', modelFinder);
 
 // API Routes
 router.get('/:model', handleGetAll);
-router.post('/:model', handlePost);
+router.post('/:model', auth('create'), handlePost);
 
 router.get('/:model/:id', handleGetOne);
-router.put('/:model/:id', handlePut);
-router.delete('/:model/:id', handleDelete);
+router.put('/:model/:id', auth('update'), handlePut);
+router.patch('/:model/:id', auth('update'), handlePatch);
+router.delete('/:model/:id', auth('delete'), handleDelete);
 
 router.use('/doc', express.static(cwd + '/docs'));
-
-// Route Handlers
-
-/**
- * function to get all records from a specified collection
- * @param {*} request Express HTTP request
- * @param {*} response Express HTTP response
- * @param {*} next Express middleware next
- */
-function handleGetAll(request,response,next) {
-  request.model.get()
-    .then( data => {
-      const output = {
-        count: data.length,
-        results: data,
-      };
-      response.status(200).json(output);
-    })
-    .catch( next );
-}
-
-/**
- * function to get one record by id from a specified collection
- * @param {*} request Express HTTP request
- * @param {*} response Express HTTP response
- * @param {*} next Express middleware next
- */
-function handleGetOne(request,response,next) {
-  request.model.get(request.params.id)
-    .then( result => response.status(200).json(result[0]) )
-    .catch( next );
-}
-
-
-/**
- * function to add one record to a specified collection
- * @param {*} request Express HTTP request
- * @param {*} response Express HTTP response
- * @param {*} next Express middleware next
- */
-function handlePost(request,response,next) {
-  request.model.post(request.body)
-    .then( result => response.status(200).json(result) )
-    .catch( next );
-}
-
-
-/**
- * function to modify a single record by id from a specified collection
- * @param {*} request Express HTTP request
- * @param {*} response Express HTTP response
- * @param {*} next Express middleware next
- */
-function handlePut(request,response,next) {
-  request.model.put(request.params.id, request.body)
-    .then( result => response.status(200).json(result) )
-    .catch( next );
-}
-
-/**
- * function to delete a single record by id from a specified collection
- * @param {*} request Express HTTP request
- * @param {*} response Express HTTP response
- * @param {*} next Express middleware next
- */
-function handleDelete(request,response,next) {
-  request.model.delete(request.params.id)
-    .then( result => response.status(200).json(result) )
-    .catch( next );
-}
 
 module.exports = router;
