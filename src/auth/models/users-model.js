@@ -63,9 +63,13 @@ users.statics.createFromOauth = function(email) {
       return user;
     })
     .catch((error) => {
+      console.log('Create User from OAuth');
       let username = email;
       let password = 'none';
-      return this.create({ username, password, email });
+      return this.create({ username, password, email })
+        .then((user) => {
+          return user.populate('capabilities').execPopulate();
+        });
     });
 };
 

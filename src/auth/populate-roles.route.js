@@ -2,7 +2,7 @@
 
 const router = require('express').Router();
 
-const Role = require('src/auth/models/roles-model.js');
+const Role = require('./models/roles-model.js');
 
 router.get('/populate-roles', (request, response, next) => {
   const capabilities = {
@@ -18,7 +18,9 @@ router.get('/populate-roles', (request, response, next) => {
       capabilities: capabilities[roleType],
     });
 
-    newRole.save().catch(console.error);
+    (async () => {
+      await newRole.save().catch(console.error);
+    })();
   }
   response.status(200).send('roles created');
 });

@@ -35,7 +35,7 @@ const authorize = (req) => {
     })
     .then((oauthUser) => {
       console.log('(4) CREATE ACCOUNT');
-      return Users.createFromOAuth(oauthUser);
+      return Users.createFromOauth(oauthUser.email);
     })
     .then((actualRealUser) => {
       console.log('(5) ALMOST ...', actualRealUser);

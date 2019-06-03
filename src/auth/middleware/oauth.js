@@ -1,6 +1,12 @@
 'use strict';
 
+const google = require('../oauth-providers/google.js');
+
 module.exports = (req, res, next) => {
-  res.cookie('auth', req.token);
-  res.send(req.token);
+  google
+    .authorize(req)
+    .then((token) => {
+      res.status(200).send(token);
+    })
+    .catch(next);
 };
