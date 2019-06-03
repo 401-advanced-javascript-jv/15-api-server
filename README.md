@@ -1,32 +1,23 @@
-# LAB - 
+# LAB - 15
 
-## Project Name
+## API Server
 
 ### Author: Jesse Van Volkinburg
 
 ### Links and Resources
-* [submission PR](http://xyz.com)
-* [travis](http://xyz.com)
-* [back-end](http://xyz.com) (when applicable)
-* [front-end](http://xyz.com) (when applicable)
+* [submission PR](https://github.com/401-advanced-javascript-jv/15-api-server/pull/1)
+* [travis](https://www.travis-ci.com/401-advanced-javascript-jv/15-api-server)
+* [back-end]() (when applicable)
 
 #### Documentation
 * [api docs](http://xyz.com) (API servers)
 * [jsdoc](http://xyz.com) (Server assignments)
-* [styleguide](http://xyz.com) (React assignments)
 
 ### Modules
-#### `modulename.js`
-##### Exported Values and Methods
-
-###### `foo(thing) -> string`
-Usage Notes or examples
-
-###### `bar(array) -> array`
-Usage Notes or examples
 
 ### Setup
-#### `.env` requirements
+
+#### `.env` (environment variable) requirements
 - `PORT` - port to run backend server on
 - `MONGODB_URI` MongoDB URI
 - `GOOGLE_CLIENT_ID` Google OAuth Client ID
@@ -42,10 +33,13 @@ actually
 
 #### Running the app
 * `npm start`
-* Endpoint: `/foo/bar/`
-  * Returns a JSON object with abc in it.
-* Endpoint: `/bing/zing/`
-  * Returns a JSON object with xyz in it.
+
+#### Database setup
+
+With the `DEVMODE` environment variable set to true, run the back-end app and perform a `GET` query to the 
+`/populate-roles` route in order to create the roles in the database.
+
+The app will not function without this step.
   
 #### Tests
 * `npm test` to run tests
