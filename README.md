@@ -27,8 +27,18 @@ Usage Notes or examples
 
 ### Setup
 #### `.env` requirements
-* `PORT` - Port Number
-* `MONGODB_URI` - URL to the running mongo instance/db
+- `PORT` - port to run backend server on
+- `MONGODB_URI` MongoDB URI
+- `GOOGLE_CLIENT_ID` Google OAuth Client ID
+- `GOOGLE_CLIENT_SECRET` Google OAuth Client Secret
+- `API_URL` relative location to `.../oauth` endpoint (e.g. `API_URL=http://localhost:3000/auth` when the auth endpoint
+ is 
+actually
+`http://localhost:3000/auth/oauth`)
+- `SECRET` token signing secret
+- _(optional)_ `SINGLE_USE_TOKENS` Sets all (non-API-key) tokens to be single-use.
+- _(optional)_ `TOKEN_LIFETIME` duration of token validity
+- _(optional)_ `DEVMODE` when set, activates additional tools, such as role population.
 
 #### Running the app
 * `npm start`
@@ -38,7 +48,7 @@ Usage Notes or examples
   * Returns a JSON object with xyz in it.
   
 #### Tests
-* How do you run tests?
+* `npm test` to run tests
 * What assertions were made?
 * What assertions need to be / should be made?
 
